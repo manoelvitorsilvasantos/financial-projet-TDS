@@ -1,8 +1,8 @@
 from converter import Converter
 
-valor = input("Valor da Moeda em questão >> ")
-inCoin = str(input("De >> ")).upper()
-outCoin = str(input("Para >> ")).upper()
-
-c = Converter(float(valor), inCoin, outCoin).fromNewCoin()
-print(f'{valor} {inCoin} para {outCoin} = {c}')
+value = input('Digite o valor em Real: ')
+moeda = str(input('Sigla da moeda em questão: '))
+moeda = moeda.upper()
+c = Converter(float(value), moeda.upper())
+saida = c.fromNewCoin()
+print(f'{value} Reais em {moeda} = {saida}')
