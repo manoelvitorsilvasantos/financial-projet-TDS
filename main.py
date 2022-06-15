@@ -1,6 +1,8 @@
 
 from sys import argv
 from converter import Converter
+from platform import *
+
 
 class Main:
 
@@ -12,11 +14,15 @@ class Main:
 		moeda = moeda.upper()
 		c = Converter(float(value), moeda.upper())
 		saida = c.fromNewCoin()
-		print(f'{value} Reais em {moeda} = {saida}')
+		print(f'{value} Reais em {moeda} = {saida}\n')
 		btn = input('\n\nDigite alguma tecla pra voltar\n')
+		if system() == 'Linux':
+			sys('cls')
+		elif system() == 'Window':
+			sys('clear')
 	def init(self):
 		print(
-			'--------- MENU DE OPÇÕES ------------------------\n'
+			'--------- MENU DE OPÇÕES ---------------------\n'
 			'1 - Planejamento de Receita e despesas\n',
 			'2 - Cadastro de Receitas e Despesas realizadas\n',
 			'3 - Visualização comparativa\n',
