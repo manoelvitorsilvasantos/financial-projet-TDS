@@ -1,5 +1,8 @@
 import re
 import datetime as dt
+from firebase import firebase_app
+
+db_movimentacao = firebase_app.getDatabase('/movimentacao')
 
 movimentacao = {
   "valor": float,
@@ -12,9 +15,7 @@ def cadastrar():
   movimentacao['descricao'] = getDescricao()
   movimentacao['data'] = getData()
 
-  # logica para salvar aqui
-
-  print(movimentacao)
+  db_movimentacao.push(movimentacao)
 
 def atualizar():
   print("Atualizando...")
