@@ -1,7 +1,12 @@
+import utils
 
-class Menu:
-	def __init__(self, opc):
-		self.opc = opc
-	def menuChoice(self):
-		if self.opc == 1:
-			
+def display(opcoes):
+  utils.limparTela()
+  for i in range(len(opcoes)):
+    print('{} - {}'.format(i, opcoes[i]['descricao']))
+  
+  op = int(input('Selecione uma opção: '))
+
+  opcoes[op]['exec']()
+
+  display(opcoes)

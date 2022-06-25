@@ -1,7 +1,7 @@
 import movimentacao
-import utils
+import menu
 
-menu = [
+menu_obj = [
   {
     'descricao': 'Sair',
     'exec': exit
@@ -20,15 +20,5 @@ menu = [
   },
 ]
 
-def display_menu():
-  utils.limparTela()
-  for i in range(len(menu)):
-    print('{} - {}'.format(i, menu[i]['descricao']))
-  
-  op = int(input('Selecione uma opção: '))
 
-  menu[op]['exec']()
-
-  display_menu()
-
-display_menu()
+menu.display(menu_obj)
