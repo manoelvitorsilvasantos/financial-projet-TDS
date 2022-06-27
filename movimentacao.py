@@ -44,8 +44,26 @@ def atualizar(caminho_db):
   input("Enter para voltar para o menu:")
 
 
-def remover():
-  print("Removendo...")
+def remover(caminho_db):
+  utils.limparTela()
+  print('------Removendo------')
+  movimentacoes = db.child(caminho_db).get()
+  print(converter(movimentacoes))
+  
+  idx = int(input("Informe o index da linha que deseja Remover: "))
+
+  item = converter(movimentacoes, True).iloc[idx]
+
+  utils.limparTela()
+  print('......Removendo......')
+  print(pd.DataFrame(item))
+  x = input('Tem certeza que deseja deletar esse registro? s ou n: ')
+
+  if x == 's':
+    db.child(caminho_db).child(item['id']).delete()
+    print('Deletado com sucesso!')
+  else: 
+    print('Cancelado!')
   input("Enter para voltar para o menu!")
 
 def listar(caminho_db, pausar=True):

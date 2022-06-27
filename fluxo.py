@@ -20,7 +20,7 @@ menu_fluxo = [
   },
   {
     'descricao': 'Remover entrada ou saida',
-    'exec': movimentacao.remover
+    'exec': lambda :movimentacao.remover('fluxo')
   },
 ]
 
