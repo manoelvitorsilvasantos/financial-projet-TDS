@@ -16,8 +16,20 @@ menu_obj = [
     'exec': planejamento.exibir_menu_planejamento
   },
   {
+    'descricao': 'Visualizar saldo',
+    'exec': lambda : input('Em desenvolvimento! (enter para voltar)')
+  },
+  {
+    'descricao': 'Visualizar comparação: efetuado X planejado',
+    'exec': lambda : input('Em desenvolvimento! (enter para voltar)')
+  },
+  {
+    'descricao': 'Viabilidade de investimento',
+    'exec': lambda : input('Em desenvolvimento! (enter para voltar)')
+  },
+  {
     'descricao': 'Converter moedas',
-    'exec': exit
+    'exec': lambda : input('Em desenvolvimento! (enter para voltar)')
   },
 ]
 
