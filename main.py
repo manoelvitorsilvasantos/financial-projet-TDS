@@ -1,5 +1,5 @@
-import movimentacao
 import menu
+import fluxo
 
 menu_obj = [
   {
@@ -7,18 +7,20 @@ menu_obj = [
     'exec': exit
   },
   {
-    'descricao': 'Cadastrar entrada ou saida',
-    'exec': movimentacao.cadastrar
+    'descricao': 'Fluxo',
+    'exec': fluxo.exibe_menu_fluxo,
   },
   {
-    'descricao': 'Atualizar entrada ou saida',
-    'exec': movimentacao.atualizar
+    'descricao': 'Plano financeiro',
+    'exec': exit
   },
   {
-    'descricao': 'Remover entrada ou saida',
-    'exec': movimentacao.remover
+    'descricao': 'Converter moedas',
+    'exec': exit
   },
 ]
 
+def exibe_menu_principal():
+  menu.display(menu_obj)
 
-menu.display(menu_obj)
+exibe_menu_principal()

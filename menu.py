@@ -7,6 +7,8 @@ def display(opcoes):
   
   op = int(input('Selecione uma opção: '))
 
+  if op == 0: return
+
   opcoes[op]['exec']()
 
   display(opcoes)
