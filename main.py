@@ -1,5 +1,6 @@
 import menu
 import fluxo
+import planejamento
 
 menu_obj = [
   {
@@ -12,7 +13,7 @@ menu_obj = [
   },
   {
     'descricao': 'Plano financeiro',
-    'exec': exit
+    'exec': planejamento.exibir_menu_planejamento
   },
   {
     'descricao': 'Converter moedas',
