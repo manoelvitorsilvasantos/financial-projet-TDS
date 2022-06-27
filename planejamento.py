@@ -25,5 +25,5 @@ menu_planejamento = [
 ]
 
 def exibir_menu_planejamento():
-  menu.display(menu_planejamento)
+  menu.display(menu_planejamento, 'Planejamento')
 

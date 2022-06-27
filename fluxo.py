@@ -25,5 +25,5 @@ menu_fluxo = [
 ]
 
 def exibe_menu_fluxo():
-  menu.display(menu_fluxo)
+  menu.display(menu_fluxo, 'Fluxo')
 

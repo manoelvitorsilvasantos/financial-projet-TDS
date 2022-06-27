@@ -34,6 +34,6 @@ menu_obj = [
 ]
 
 def exibe_menu_principal():
-  menu.display(menu_obj)
+  menu.display(menu_obj,'Principal')
 
 exibe_menu_principal()
