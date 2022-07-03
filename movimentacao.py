@@ -23,15 +23,16 @@ def atualizar(caminho_db):
   utils.limparTela()
   print('------Atualizando------')
   movimentacoes = db.child(caminho_db).get()
-  print(converter(movimentacoes))
+  df_movimentacoes = converter(movimentacoes, True)
+  print(df_movimentacoes.drop(columns=["id"]))
   
   idx = int(input("Informe o index da linha que deseja atualizar: "))
 
-  item = converter(movimentacoes, True).iloc[idx]
+  item = df_movimentacoes.iloc[idx]
 
   utils.limparTela()
   print('......Alterando......')
-  print(pd.DataFrame(item))
+  print(item.drop(labels=['id']).to_string())
   print('........Novos valores........')
   movimentacao_atualizada = movimentacao
   movimentacao_atualizada['valor'] = getValor()
