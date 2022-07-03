@@ -67,8 +67,11 @@ def remover(caminho_db):
     print('Cancelado!')
   input("Enter para voltar para o menu!")
 
+def buscar_todos(caminho_db):
+  return db.child(caminho_db).get()
+
 def listar(caminho_db, pausar=True):
-  movimentacoes = db.child(caminho_db).get()
+  movimentacoes = buscar_todos(caminho_db)
   print("_____________________________________")
   print(converter(movimentacoes))
   
