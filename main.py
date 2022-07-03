@@ -1,6 +1,7 @@
 import menu
 import fluxo
 import planejamento
+import movimentacao
 
 menu_obj = [
   {
@@ -17,7 +18,7 @@ menu_obj = [
   },
   {
     'descricao': 'Visualizar saldo',
-    'exec': lambda : input('Em desenvolvimento! (enter para voltar)')
+    'exec': lambda : movimentacao.mostrar_saldo()
   },
   {
     'descricao': 'Visualizar comparação: efetuado X planejado',

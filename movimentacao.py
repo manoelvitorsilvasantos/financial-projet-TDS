@@ -18,6 +18,8 @@ def cadastrar(caminho_db):
   movimentacao['data'] = getData()
 
   db.child(caminho_db).push(movimentacao)
+  print("Cadastrado com sucesso!")
+  input("Enter para voltar para o menu:")
 
 def atualizar(caminho_db):
   utils.limparTela()
@@ -49,15 +51,16 @@ def remover(caminho_db):
   utils.limparTela()
   print('------Removendo------')
   movimentacoes = db.child(caminho_db).get()
-  print(converter(movimentacoes))
+  df_movimentacoes = converter(movimentacoes, True)
+  print(df_movimentacoes.drop(columns=["id"]))
   
   idx = int(input("Informe o index da linha que deseja Remover: "))
 
-  item = converter(movimentacoes, True).iloc[idx]
+  item = df_movimentacoes.iloc[idx]
 
   utils.limparTela()
   print('......Removendo......')
-  print(pd.DataFrame(item))
+  print(item.drop(labels=['id']).to_string())
   x = input('Tem certeza que deseja deletar esse registro? s ou n: ')
 
   if x == 's':
@@ -73,7 +76,7 @@ def buscar_todos(caminho_db):
 def listar(caminho_db, pausar=True):
   movimentacoes = buscar_todos(caminho_db)
   print("_____________________________________")
-  print(converter(movimentacoes))
+  print(converter(movimentacoes).sort_values(['data']))
   
   if pausar: input("Enter para voltar para o menu!")
 
@@ -88,6 +91,24 @@ def converter(dados, com_id=False):
     df['id'] = dados.keys()
   
   return df
+
+def mostrar_saldo():
+  utils.limparTela()
+
+  movs = buscar_todos('fluxo')
+
+  df = pd.DataFrame(movs.values())
+  df['data'] = pd.to_datetime(df['data'], format='%d-%m-%Y')
+  df.set_index('data', inplace=True)
+  df.sort_index(inplace=True)
+  df['total'] = df['valor'].cumsum()
+
+  print(df)
+  print("________________________________________")
+  print("::::::::::::::: SALDO ::::::::::::::::::")
+  print(df['total'].tail(1).to_string())
+  input("Enter para voltar para o menu!")
+
 
 def getValor():
   x = input('Informe o valor: ')
