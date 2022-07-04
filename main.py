@@ -2,6 +2,7 @@ import modules.menu as menu
 import fluxo
 import planejamento
 import modules.movimentacao.movimentacao as movimentacao
+import modules.conversao.converter as conv
 import comparativo
 
 menu_obj = [
@@ -31,7 +32,7 @@ menu_obj = [
   },
   {
     'descricao': 'Converter moedas',
-    'exec': lambda : input('Em desenvolvimento! (enter para voltar)')
+    'exec': lambda : conv.main()
   },
 ]
 
