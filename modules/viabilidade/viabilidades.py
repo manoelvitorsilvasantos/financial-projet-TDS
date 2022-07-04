@@ -1,7 +1,11 @@
 import pandas as pd
 import numpy as np
+import modules.utils as utils
+
 
 def menu(titulo):
+    
+    utils.limparTela()
     print("::::::::::::::: ANALISE FINANCEIRA ::::::::::::::::::")
     j = 5#int(input('Periodo em anos >> '))
     rate = 0.05 #float(input('taxa >> '))
