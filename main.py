@@ -6,6 +6,7 @@ import fluxo
 import planejamento
 import modules.movimentacao.movimentacao as movimentacao
 import modules.conversao.converter as conv
+import modules.viabilidade.viabilidades as v
 import comparativo
 
 menu_obj = [
@@ -31,7 +32,7 @@ menu_obj = [
   },
   {
     'descricao': 'Viabilidade de investimento',
-    'exec': lambda : input('Em desenvolvimento! (enter para voltar)')
+    'exec': lambda : v.main('Análise de viabilidade financeira')
   },
   {
     'descricao': 'Converter moedas',
