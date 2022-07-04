@@ -2,6 +2,7 @@ import pandas as pd
 from os import*
 
 
+
 #CALCULAR VALOR VALOR LIQUIDO
 def vlp(taxa, valores, datas):
     data_minima = min(datas)
@@ -18,27 +19,46 @@ def tir(valores, datas):
 #limpar tela
 def limparTela():
     system('cls' if name == 'nt' else 'clear')
-
-def fluxo_meses():
-    lista_meses = list()
-    lista_valores = list()
-    
-    meses = int(input('Em quantos meses: ')) + 1
-    taxa = float(input('Valor da taxa p/ ano {valor inteiro}: '))
-def fluxo_anos():
-    anos = int(input('Em quantos anos: ')) + 1
 def main(cabecalho):
-    limparTela()
-    periodo = list()
-    valores = list()
-    print(':::::::::::::|{}|:::::::::::::'.format(cabecalho))
-    escolha = input('Análise de fluxo em [1] meses ou [2] anos?')
+    j = 5#int(input('Periodo em anos >> '))
+    rate = 0.05 #float(input('taxa >> '))
+    vi = -3000 #float(input('Investimento inicial >> '))
+    v1 = 1000 #float(input('valor do primeiro periodo[mes ou ano] >> '))
 
-    if escolha == 1:
-        fluxo_meses()
-    elif escolha == 2:
-        fluxo_anos()
+    total = 0
+    flx = list()
+    ano = list()
+    total_descontado = list()
+    saldo = list()
 
 
+    for i in range(j):
+        if i == 0:
+            flx.append( vi / (1 + rate) ** i)
+            ano.append(i)
+            total_descontado.append(-vi)
+            saldo.append(round(-(vi) - (v1 / (1 + rate ) ** i), 2))
+        elif i == 4:
+            flx.append(round((v1 / (1 + rate ) ** i), 2))
+            ano.append(i)
+            total_descontado.append(v1)
+        else:
+            flx.append(round((v1 / (1 + rate ) ** i), 2))
+            ano.append(i)
+            total_descontado.append(v1)
+            saldo.append(round(-(vi) - (v1 / (1 + rate ) ** i), 2))
 
-main('Análise de Viabilidade de investimento')
+    for r in flx:
+        total += round(r, 2)
+
+    saldo.append(round(total, 2))
+
+    data = {
+        'Ano': ano,
+        'Total': total_descontado,
+        'Descontado(R$)': flx,
+        'Saldo':saldo
+    }
+
+    valores = pd.DataFrame(data)
+    print(valores)
