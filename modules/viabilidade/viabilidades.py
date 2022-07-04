@@ -53,3 +53,4 @@ def main(cabecalho):
 
     valores = pd.DataFrame(data)
     print(valores)
+    input("Aperte ENTER p/ voltar ao Menu")
