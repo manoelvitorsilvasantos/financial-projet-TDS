@@ -7,10 +7,10 @@ def menu(titulo):
     
     utils.limparTela()
     print("::::::::::::::: ANALISE FINANCEIRA ::::::::::::::::::")
-    j = 5#int(input('Periodo em anos >> '))
-    rate = 0.05 #float(input('taxa >> '))
-    vi = -3000 #float(input('Investimento inicial >> '))
-    v1 = 1000 #float(input('valor do primeiro periodo[mes ou ano] >> '))
+    j = int(input('Periodo em anos >> '))
+    rate = float(input('taxa >> '))
+    vi = -float(input('Investimento inicial >> '))
+    v1 = float(input('valor do primeiro periodo[mes ou ano] >> '))
 
     total = 0            
     flx = list()
