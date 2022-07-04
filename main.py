@@ -2,6 +2,7 @@ import menu
 import fluxo
 import planejamento
 import movimentacao
+import comparativo
 
 menu_obj = [
   {
@@ -22,7 +23,7 @@ menu_obj = [
   },
   {
     'descricao': 'Visualizar comparação: efetuado X planejado',
-    'exec': lambda : input('Em desenvolvimento! (enter para voltar)')
+    'exec': lambda : comparativo.getData()
   },
   {
     'descricao': 'Viabilidade de investimento',

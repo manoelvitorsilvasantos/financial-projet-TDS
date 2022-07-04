@@ -92,6 +92,14 @@ def converter(dados, com_id=False):
   
   return df
 
+def movimentsDataFrame(caminho_db):
+  data = buscar_todos(caminho_db)
+  df = pd.DataFrame(data.values())
+  df['data'] = pd.to_datetime(df['data'], format='%d-%m-%Y')
+  df.set_index('data', inplace=True)
+
+  return df
+
 def mostrar_saldo():
   utils.limparTela()
 
