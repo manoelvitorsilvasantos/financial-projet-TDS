@@ -32,7 +32,7 @@ menu_obj = [
   },
   {
     'descricao': 'Viabilidade de investimento',
-    'exec': lambda : v.main('Análise de viabilidade financeira')
+    'exec': lambda : v.menu('Análise de viabilidade financeira')
   },
   {
     'descricao': 'Converter moedas',
