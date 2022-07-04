@@ -98,7 +98,7 @@ def movimentsDataFrame(caminho_db):
   df['data'] = pd.to_datetime(df['data'], format='%d-%m-%Y')
   df.set_index('data', inplace=True)
 
-  return df
+  return df.sort_index()
 
 def mostrar_saldo():
   utils.limparTela()
