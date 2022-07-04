@@ -3,15 +3,6 @@ from os import*
 
 
 
-#CALCULAR VALOR VALOR LIQUIDO
-def vlp(taxa, valores, datas):
-    data_minima = min(datas)
-    return sum([
-        valores/(1 + taxa)**((data - data_minima).days/365)
-        for valor, data
-        in zip(valores, datas)
-    ])
-
 #calcular TIR
 def tir(valores, datas):
     return newton(lambda taxa:vlp(taxa, valores, datas), 0)
