@@ -3,6 +3,7 @@ import pandas as pd
 import datetime as dt
 from firebase import firebase_app
 import modules.utils as utils
+import modules.movimentacao.controller as controller
 
 db = firebase_app.getDatabase('/')
 
@@ -17,14 +18,16 @@ def cadastrar(caminho_db):
   movimentacao['descricao'] = getDescricao()
   movimentacao['data'] = getData()
 
-  db.child(caminho_db).push(movimentacao)
-  print("Cadastrado com sucesso!")
-  input("Enter para voltar para o menu:")
+  if controller.cadastrar(caminho_db, movimentacao):
+    print("Cadastrado com sucesso!")
+    input("Enter para voltar para o menu:")
+  else:
+    print("Não foi possível cadastrar!")
 
 def atualizar(caminho_db):
   utils.limparTela()
   print('------Atualizando------')
-  movimentacoes = db.child(caminho_db).get()
+  movimentacoes = controller.buscar_todos(caminho_db)
   df_movimentacoes = converter(movimentacoes, True)
   print(df_movimentacoes.drop(columns=["id"]))
   
@@ -40,17 +43,18 @@ def atualizar(caminho_db):
   movimentacao_atualizada['valor'] = getValor()
   movimentacao_atualizada['descricao'] = getDescricao()
   movimentacao_atualizada['data'] = getData()
-  
-  db.child(caminho_db).child(item['id']).set(movimentacao_atualizada)
 
-  print("Atualizado com sucesso!")
-  input("Enter para voltar para o menu:")
+  if controller.atualizar(caminho_db, movimentacao, item['id']):
+    print("Atualizado com sucesso!")
+    input("Enter para voltar para o menu:")
+  else:
+    print("Não foi possível cadastrar!")
 
 
 def remover(caminho_db):
   utils.limparTela()
   print('------Removendo------')
-  movimentacoes = db.child(caminho_db).get()
+  movimentacoes = controller.buscar_todos(caminho_db)
   df_movimentacoes = converter(movimentacoes, True)
   print(df_movimentacoes.drop(columns=["id"]))
   
@@ -64,17 +68,16 @@ def remover(caminho_db):
   x = input('Tem certeza que deseja deletar esse registro? s ou n: ')
 
   if x == 's':
-    db.child(caminho_db).child(item['id']).delete()
-    print('Deletado com sucesso!')
+    if controller.remover(caminho_db, item['id']):
+      print("Deletado com sucesso!")
+    else:
+      print("Não foi possível deletar!")
   else: 
     print('Cancelado!')
   input("Enter para voltar para o menu!")
 
-def buscar_todos(caminho_db):
-  return db.child(caminho_db).get()
-
 def listar(caminho_db, pausar=True):
-  movimentacoes = buscar_todos(caminho_db)
+  movimentacoes = controller.buscar_todos(caminho_db)
   print("_____________________________________")
   print(converter(movimentacoes).sort_values(['data']))
   
@@ -93,7 +96,7 @@ def converter(dados, com_id=False):
   return df
 
 def movimentsDataFrame(caminho_db):
-  data = buscar_todos(caminho_db)
+  data = controller.buscar_todos(caminho_db)
   df = pd.DataFrame(data.values())
   df['data'] = pd.to_datetime(df['data'], format='%d-%m-%Y')
   df.set_index('data', inplace=True)
@@ -103,7 +106,7 @@ def movimentsDataFrame(caminho_db):
 def mostrar_saldo():
   utils.limparTela()
 
-  movs = buscar_todos('fluxo')
+  movs = controller.buscar_todos('fluxo')
 
   df = pd.DataFrame(movs.values())
   df['data'] = pd.to_datetime(df['data'], format='%d-%m-%Y')
