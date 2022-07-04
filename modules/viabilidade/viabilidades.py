@@ -9,7 +9,7 @@ def menu(titulo):
     print("::::::::::::::: ANALISE FINANCEIRA ::::::::::::::::::")
     j = int(input('Periodo em anos >> '))
     rate = float(input('taxa >> '))
-    vi = -float(input('Investimento inicial >> '))
+    vi = float(input('Investimento inicial >> '))
     v1 = float(input('valor do primeiro periodo[mes ou ano] >> '))
 
     total = 0            
