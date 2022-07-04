@@ -33,7 +33,6 @@ def limparTela():
 
 def main(cabecalho):
     limparTela()
-    estado = False
     print(':::::::::::::|{}|:::::::::::::'.format(cabecalho))
     moeda = str(input('SIGLA da moeda [3 letras]: '))
     valor = input('Valor em Real: ')
