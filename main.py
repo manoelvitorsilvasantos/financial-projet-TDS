@@ -35,7 +35,7 @@ menu_obj = [
   },
   {
     'descricao': 'Converter moedas',
-    'exec': lambda : conv.main()
+    'exec': lambda : conv.main('CONVERSOR DE MOEDA')
   },
 ]
 
