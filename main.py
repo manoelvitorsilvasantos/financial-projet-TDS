@@ -1,7 +1,7 @@
-import menu
+import modules.menu as menu
 import fluxo
 import planejamento
-import movimentacao
+import modules.movimentacao.movimentacao as movimentacao
 import comparativo
 
 menu_obj = [

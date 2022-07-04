@@ -1,4 +1,4 @@
-import utils
+import modules.utils as utils
 
 def display(opcoes, cabecalho):
   utils.limparTela()

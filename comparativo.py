@@ -1,7 +1,7 @@
-import utils
+import modules.utils as utils
 import pandas as pd
 from dateutil.relativedelta import relativedelta
-from movimentacao import movimentsDataFrame
+from modules.movimentacao.movimentacao import movimentsDataFrame
 
 def getData():
   utils.limparTela()

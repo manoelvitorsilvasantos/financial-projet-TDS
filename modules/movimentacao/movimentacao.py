@@ -2,7 +2,7 @@ import re
 import pandas as pd
 import datetime as dt
 from firebase import firebase_app
-import utils
+import modules.utils as utils
 
 db = firebase_app.getDatabase('/')
 

@@ -1,5 +1,5 @@
-import movimentacao
-import menu
+import modules.movimentacao.movimentacao as movimentacao
+import modules.menu as menu
 
 menu_fluxo = [
   {
