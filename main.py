@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 import modules.menu as menu
 import fluxo
 import planejamento
